@@ -4,6 +4,8 @@ import BuildType.Companion.RELEASE
 plugins {
     androidLibrary
     kotlinAndroid
+    kotlin(kotlinKapt)
+    daggerHilt
 }
 
 android {
@@ -47,4 +49,8 @@ dependencies {
 
     //network
     implementation(Dependencies.Network.retrofit)
+
+    //hilt
+    implementation(Dependencies.DI.daggerHiltAndroid)
+    kapt(Dependencies.DI.AnnotationProcessor.daggerHiltCompiler)
 }
