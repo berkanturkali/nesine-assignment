@@ -1,9 +1,11 @@
 plugins {
-    id("java-library")
-    id("org.jetbrains.kotlin.jvm")
+    kotlinLibrary
+    kotlinJvm
+    kotlin(kotlinKapt)
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+dependencies {
+    implementAll(Dependencies.Network.components)
+    implementation(Dependencies.DI.hiltCore)
+    kapt(Dependencies.DI.AnnotationProcessor.daggerHiltCompiler)
 }
