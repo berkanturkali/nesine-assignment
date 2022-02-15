@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "NesineAssignment"
-include ':app'
+include (":app")
