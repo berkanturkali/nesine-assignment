@@ -44,4 +44,7 @@ dependencies {
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.junitExt)
     androidTestImplementation(Dependencies.Test.espresso)
+
+    //network
+    implementation(Dependencies.Network.retrofit)
 }
