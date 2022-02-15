@@ -16,3 +16,4 @@ rootProject.name = "NesineAssignment"
 include (":app")
 include(":remote")
 include(":common")
+include(":core")
