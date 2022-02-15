@@ -1,8 +1,7 @@
-import ProjectLib.common
-import ProjectLib.remote
+import BuildType.Companion.DEBUG
 
 plugins {
-    androidApplication
+    androidLibrary
     kotlinAndroid
 }
 
@@ -10,21 +9,18 @@ android {
     compileSdk = Config.Version.compileSdkVersion
 
     defaultConfig {
-        applicationId = Config.Android.applicationId
         minSdk = Config.Version.minSdkVersion
         targetSdk = Config.Version.targetSdkVersion
-        versionCode = Config.Version.versionCode
-        versionName = Config.Version.versionName
-        multiDexEnabled = Config.isMultiDexEnabled
         testInstrumentationRunner = Config.Android.testInstrumentationRunner
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        named(BuildType.DEBUG) {
+        named(DEBUG) {
             isMinifyEnabled = false
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
         }
-        named(BuildType.RELEASE) {
+        named(BuildType.Companion.RELEASE) {
             isMinifyEnabled = true
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
         }
@@ -39,8 +35,7 @@ android {
 }
 
 dependencies {
-    implementation(project(remote))
-    implementation(project(common))
+
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.appCompat)
     implementation(Dependencies.View.material)

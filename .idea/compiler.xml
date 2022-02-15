@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="NesineAssignment.app" target="11" />
       <module name="NesineAssignment.buildSrc" target="11" />
+      <module name="NesineAssignment.common" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
