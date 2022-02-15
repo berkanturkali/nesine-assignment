@@ -50,7 +50,15 @@ dependencies {
     //network
     implementation(Dependencies.Network.retrofit)
 
+
     //hilt
     implementation(Dependencies.DI.daggerHiltAndroid)
     kapt(Dependencies.DI.AnnotationProcessor.daggerHiltCompiler)
+
+    //test
+    testImplementation(Dependencies.Test.truth)
+    testImplementation(Dependencies.Test.coroutines)
+    testImplementation(Dependencies.Network.moshi)
+    testImplementation(Dependencies.Network.retrofitMoshi)
+    testImplementation(Dependencies.Test.mockWebServer)
 }
