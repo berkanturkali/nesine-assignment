@@ -55,6 +55,8 @@ dependencies {
     implementation(Dependencies.DI.daggerHiltAndroid)
     kapt(Dependencies.DI.AnnotationProcessor.daggerHiltCompiler)
 
+    implementation(Dependencies.Coroutines.androidCoroutines)
+
     //test
     testImplementation(Dependencies.Test.truth)
     testImplementation(Dependencies.Test.coroutines)
