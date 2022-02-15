@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "NesineAssignment"
 include (":app")
+include(":remote")

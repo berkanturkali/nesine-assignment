@@ -1,3 +1,5 @@
+import ProjectLib.remote
+
 plugins {
     androidApplication
     kotlinAndroid
@@ -36,6 +38,7 @@ android {
 }
 
 dependencies {
+    implementation(project(remote))
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.appCompat)
     implementation(Dependencies.View.material)
