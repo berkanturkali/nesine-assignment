@@ -9,13 +9,16 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.nesineassignment.common.Constants.BODY_KEY
 import com.example.nesineassignment.common.Constants.TITLE_KEY
+import com.example.nesineassignment.common.setNavigationResult
 import com.example.nesineassignment.home.databinding.DialogEditBinding
+import com.example.nesineassignment.home.viewmodel.EditDialogViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
 
 class EditDialog : BottomSheetDialogFragment() {
 
-    private lateinit var binding: DialogEditBinding
+    private var _binding: DialogEditBinding?  =null
+    private val binding get() = _binding!!
 
     private val args by navArgs<EditDialogArgs>()
 
@@ -26,7 +29,7 @@ class EditDialog : BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = DialogEditBinding.inflate(inflater, container, false)
+        _binding = DialogEditBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,7 +46,7 @@ class EditDialog : BottomSheetDialogFragment() {
             } else {
                 Snackbar.make(this.requireView(), "Field can not be empty", Snackbar.LENGTH_LONG)
                     .setBackgroundTint(ContextCompat.getColor(this.requireContext(),
-                        com.example.assignment.common.R.color.error))
+                        com.example.nesineassignment.common.R.color.error))
                     .show()
             }
         }
@@ -52,6 +55,6 @@ class EditDialog : BottomSheetDialogFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding.unbind()
+        _binding = null
     }
 }
