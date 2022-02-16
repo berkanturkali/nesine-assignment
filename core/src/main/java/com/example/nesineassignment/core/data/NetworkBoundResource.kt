@@ -14,39 +14,39 @@ inline fun <ResultType, RequestType, DomainType> networkBoundResource(
     crossinline saveFetchResult: suspend (RequestType) -> Unit,
     crossinline onFetchFailed: (Throwable) -> Unit = { },
     refresh: Boolean = true,
-    crossinline shouldFetch: (ResultType) -> Boolean,
+    crossinline shouldFetch: (ResultType?) -> Boolean,
     crossinline mapFromEntity: (ResultType) -> DomainType,
     postExecutionThread: PostExecutionThread,
 ) = channelFlow<Resource<DomainType>> {
     val data = query().first()
     if (refresh) {
-        if (shouldFetch(data!!)) {
-            send(Resource.Loading())
-            try {
-                withContext(postExecutionThread.io) {
-                    val response = fetch()
-                    saveFetchResult(response)
+            if (shouldFetch(data)) {
+                send(Resource.Loading())
+                try {
+                    withContext(postExecutionThread.io) {
+                        val response = fetch()
+                        saveFetchResult(response)
+                    }
+                    query().map {
+                        mapFromEntity(it!!)
+                    }
+                        .collect {
+                            send(Resource.Success(it))
+                        }
+                } catch (throwable: Throwable) {
+                    onFetchFailed(throwable)
+                    query().collect {
+                        send(Resource.Error(throwable))
+                    }
                 }
+            } else {
                 query().map {
                     mapFromEntity(it!!)
                 }
                     .collect {
                         send(Resource.Success(it))
                     }
-            } catch (throwable: Throwable) {
-                onFetchFailed(throwable)
-                query().collect {
-                    send(Resource.Error(throwable))
-                }
             }
-        } else {
-            query().map {
-                mapFromEntity(it!!)
-            }
-                .collect {
-                    send(Resource.Success(it))
-                }
-        }
     } else {
         query().map {
             mapFromEntity(it!!)
