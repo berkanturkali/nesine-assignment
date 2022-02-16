@@ -66,6 +66,9 @@ dependencies {
     implementation(Dependencies.View.recyclerView)
     implementation(Dependencies.View.swipeRefresh)
 
+    //navigation
+    implementation(Dependencies.Navigation.fragmentKtx)
+
 
     /* test */
     testImplementation(Dependencies.Test.truth)

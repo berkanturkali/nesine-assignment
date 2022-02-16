@@ -18,7 +18,7 @@ internal class FakePostsCache : PostsCache {
         return if (cache.size != 0) {
             flow { emit(cache.values.toList()) }
         } else {
-            flow { emit(null) }
+            flow { emit(listOf()) }
 
         }
     }

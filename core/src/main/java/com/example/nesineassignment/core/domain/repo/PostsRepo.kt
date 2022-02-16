@@ -6,4 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface PostsRepo {
     suspend fun fetchPosts(refresh: Boolean): Flow<Resource<List<Post>>>
+
+    suspend fun remove(post:Post)
 }

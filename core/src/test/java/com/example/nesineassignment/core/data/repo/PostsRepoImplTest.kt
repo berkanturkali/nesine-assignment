@@ -36,10 +36,11 @@ class PostsRepoImplTest {
     )
 
     @Test
-    fun `check that fetchPosts initially emits loading if refresh is true and cache is empty or null`() = runTest {
-        val post = postsRepo.fetchPosts(true).first()
-        Truth.assertThat(post).isInstanceOf(Resource.Loading::class.java)
-    }
+    fun `check that fetchPosts initially emits loading if refresh is true and cache is empty or null`() =
+        runTest {
+            val post = postsRepo.fetchPosts(true).first()
+            Truth.assertThat(post).isInstanceOf(Resource.Loading::class.java)
+        }
 
     @Test
     fun `check that fetchPosts returns error if error occurs while fetching data`() = runTest {
@@ -83,5 +84,20 @@ class PostsRepoImplTest {
             val post = (posts as Resource.Success).data!!.first()
             Truth.assertThat(post).isEqualTo(DummyData.post)
         }
+
+    @Test
+    fun `check that delete remove data from cache`() {
+        runTest {
+            postsCache.upsert(DummyData.postEntity)
+            val posts = postsRepo.fetchPosts(false).first()
+            Truth.assertThat(posts).isInstanceOf(Resource.Success::class.java)
+            val post = (posts as Resource.Success).data?.first()
+            Truth.assertThat(post).isEqualTo(DummyData.post)
+            postsRepo.remove(DummyData.post)
+            val postFlow = postsRepo.fetchPosts(false).first()
+            val newPosts = (postFlow as Resource.Success).data
+            Truth.assertThat(newPosts).isEmpty()
+        }
+    }
 
 }
