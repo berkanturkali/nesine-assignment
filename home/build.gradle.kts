@@ -58,4 +58,9 @@ dependencies {
     //lifecycle
     implementation(Dependencies.AndroidX.liveDataKtx)
 
+
+    /* test */
+    testImplementation(Dependencies.Test.truth)
+    testImplementation(Dependencies.Test.coroutines)
+
 }

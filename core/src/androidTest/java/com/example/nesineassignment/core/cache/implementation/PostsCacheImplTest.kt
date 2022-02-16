@@ -9,6 +9,7 @@ import com.example.nesineassignment.core.cache.db.PostsDb
 import com.google.common.truth.Truth
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -95,6 +96,11 @@ class PostsCacheImplTest {
         postsCache.clear()
         Truth.assertThat(postsCache.posts().first()).isEmpty()
 
+    }
+
+    @After
+    fun tearDown(){
+        postsDb.close()
     }
 
 }
