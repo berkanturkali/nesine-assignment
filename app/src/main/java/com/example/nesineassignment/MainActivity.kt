@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
         navController = navHostFragment.findNavController()
         val appBarConfiguration =
-            AppBarConfiguration(setOf(com.example.nesineassignment.home.R.id.home_graph))
+            AppBarConfiguration(setOf(com.example.nesineassignment.home.R.id.homeFragment))
         binding.toolbar
             .setupWithNavController(navController, appBarConfiguration)
         navController.addOnDestinationChangedListener { _, destination, _ ->

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.nesineassignment.home.ui.HomeFragment"
-        android:label="HomeFragment"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.nesineassignment.home.ui.DetailsFragment"
-        android:label="DetailsFragment"
+        android:label="@string/details"
         tools:layout="@layout/fragment_details">
         <argument
             android:name="post"
@@ -29,7 +29,7 @@
     <dialog
         android:id="@+id/editDialog"
         android:name="com.example.nesineassignment.home.ui.EditDialog"
-        android:label="EditDialog"
+        android:label=""
         tools:layout="@layout/dialog_edit">
     <argument
         android:name="title_desc"

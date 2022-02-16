@@ -17,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 
 class EditDialog : BottomSheetDialogFragment() {
 
-    private var _binding: DialogEditBinding?  =null
+    private var _binding: DialogEditBinding? = null
     private val binding get() = _binding!!
 
     private val args by navArgs<EditDialogArgs>()
@@ -36,7 +36,9 @@ class EditDialog : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.editEt.setText(args.titleDesc)
-        binding.toolbar.title = if (args.isTitle) "Update Title" else "Update Body"
+        binding.toolbar.title =
+            if (args.isTitle) resources.getString(com.example.nesineassignment.common.R.string.update_title) else resources.getString(
+                com.example.nesineassignment.common.R.string.update_body)
         binding.updateBtn.setOnClickListener {
             val field = binding.editEt.text?.toString()?.trim()
             if (viewModel.isValid(field)) {
@@ -44,7 +46,9 @@ class EditDialog : BottomSheetDialogFragment() {
                 setNavigationResult(key, field)
                 dismiss()
             } else {
-                Snackbar.make(this.requireView(), "Field can not be empty", Snackbar.LENGTH_LONG)
+                Snackbar.make(this.requireView(),
+                    resources.getString(com.example.nesineassignment.common.R.string.field_can_not_be_empty),
+                    Snackbar.LENGTH_LONG)
                     .setBackgroundTint(ContextCompat.getColor(this.requireContext(),
                         com.example.nesineassignment.common.R.color.error))
                     .show()

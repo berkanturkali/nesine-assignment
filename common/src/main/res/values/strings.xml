@@ -3,4 +3,9 @@
     <string name="lorem_title">sunt aut facere repellat provident occaecati excepturi optio reprehenderit</string>
     <string name="lorem_desc">quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto</string>
     <string name="update">Update</string>
+    <string name="home">Home</string>
+    <string name="details">Details</string>
+    <string name="update_title">Update Title</string>
+    <string name="update_body">Update Body</string>
+    <string name="field_can_not_be_empty">Field can not be empty</string>
 </resources>
