@@ -7,30 +7,30 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class PostsCacheImpl @Inject constructor(
-    private val dao: PostsDao
+    private val dao: PostsDao,
 ) : PostsCache {
 
     override suspend fun upsert(post: PostEntity) {
-
+        dao.upsert(post)
     }
 
-    override fun posts(): Flow<List<PostEntity>> {
-        TODO("Not yet implemented")
+    override fun posts(): Flow<List<PostEntity>?> {
+        return dao.posts()
     }
 
     override suspend fun insertAll(posts: List<PostEntity>) {
-        TODO("Not yet implemented")
+        dao.insertAll(posts)
     }
 
     override suspend fun delete(post: PostEntity): Int {
-        TODO("Not yet implemented")
+        return dao.delete(post)
     }
 
     override suspend fun update(post: PostEntity): Int {
-        TODO("Not yet implemented")
+        return dao.update(post)
     }
 
     override suspend fun clear() {
-        TODO("Not yet implemented")
+        dao.clear()
     }
 }

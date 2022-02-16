@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface PostsCache {
     suspend fun upsert(post: PostEntity)
-    fun posts(): Flow<List<PostEntity>>
+    fun posts(): Flow<List<PostEntity>?>
     suspend fun insertAll(posts: List<PostEntity>)
     suspend fun delete(post: PostEntity): Int
     suspend fun update(post: PostEntity): Int
