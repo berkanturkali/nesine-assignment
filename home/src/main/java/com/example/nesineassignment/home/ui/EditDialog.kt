@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.example.nesineassignment.common.Constants.BODY_KEY
+import com.example.nesineassignment.common.Constants.TITLE_KEY
 import com.example.nesineassignment.home.databinding.DialogEditBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.Snackbar
