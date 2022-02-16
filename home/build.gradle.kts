@@ -1,9 +1,13 @@
 import BuildType.Companion.DEBUG
 import BuildType.Companion.RELEASE
+import ProjectLib.common
+import ProjectLib.core
 
 plugins {
     androidLibrary
     kotlinAndroid
+    kotlin(kotlinKapt)
+    daggerHilt
 }
 
 android {
@@ -36,6 +40,9 @@ android {
 }
 
 dependencies {
+    //project lib
+    implementation(project(core))
+    implementation(project(common))
 
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.appCompat)
@@ -43,4 +50,9 @@ dependencies {
     implementation(Dependencies.View.constraintLayout)
     androidTestImplementation(Dependencies.Test.junitExt)
     androidTestImplementation(Dependencies.Test.espresso)
+
+    //hilt
+    implementation(Dependencies.DI.daggerHiltAndroid)
+    kapt(Dependencies.DI.AnnotationProcessor.daggerHiltCompiler)
+
 }
