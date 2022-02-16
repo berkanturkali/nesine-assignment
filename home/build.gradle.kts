@@ -55,4 +55,7 @@ dependencies {
     implementation(Dependencies.DI.daggerHiltAndroid)
     kapt(Dependencies.DI.AnnotationProcessor.daggerHiltCompiler)
 
+    //lifecycle
+    implementation(Dependencies.AndroidX.liveDataKtx)
+
 }
