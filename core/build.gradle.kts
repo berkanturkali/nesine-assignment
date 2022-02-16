@@ -1,5 +1,6 @@
 import BuildType.Companion.DEBUG
 import BuildType.Companion.RELEASE
+import ProjectLib.remote
 
 plugins {
     androidLibrary
@@ -38,7 +39,7 @@ android {
 }
 
 dependencies {
-
+    implementation(project(remote))
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.appCompat)
     implementation(Dependencies.View.material)
