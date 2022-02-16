@@ -8,14 +8,14 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
-inline fun <ResultType, RequestType,DomainType> networkBoundResource(
+inline fun <ResultType, RequestType, DomainType> networkBoundResource(
     crossinline query: () -> Flow<ResultType?>,
     crossinline fetch: suspend () -> RequestType,
     crossinline saveFetchResult: suspend (RequestType) -> Unit,
     crossinline onFetchFailed: (Throwable) -> Unit = { },
     refresh: Boolean = true,
-    crossinline shouldFetch:(ResultType) -> Boolean,
-    crossinline mapFromEntity:(ResultType) -> DomainType,
+    crossinline shouldFetch: (ResultType) -> Boolean,
+    crossinline mapFromEntity: (ResultType) -> DomainType,
     postExecutionThread: PostExecutionThread,
 ) = channelFlow<Resource<DomainType>> {
     val data = query().first()
@@ -37,7 +37,7 @@ inline fun <ResultType, RequestType,DomainType> networkBoundResource(
                     send(Resource.Error(throwable))
                 }
             }
-        }else{
+        } else {
             query().map {
                 mapFromEntity(it!!)
             }
@@ -45,8 +45,7 @@ inline fun <ResultType, RequestType,DomainType> networkBoundResource(
                     send(Resource.Success(it))
                 }
         }
-    }
-    else {
+    } else {
         query().map {
             mapFromEntity(it!!)
         }

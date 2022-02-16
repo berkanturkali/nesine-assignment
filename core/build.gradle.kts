@@ -47,6 +47,11 @@ dependencies {
     androidTestImplementation(Dependencies.Test.junitExt)
     androidTestImplementation(Dependencies.Test.espresso)
 
+    //cache
+    implementation(Dependencies.Room.room)
+    implementation(Dependencies.Room.roomKtx)
+    kapt(Dependencies.Room.AnnotationProcessor.room)
+
     //network
     implementation(Dependencies.Network.retrofit)
 
@@ -55,6 +60,7 @@ dependencies {
     implementation(Dependencies.DI.daggerHiltAndroid)
     kapt(Dependencies.DI.AnnotationProcessor.daggerHiltCompiler)
 
+    //coroutines
     implementation(Dependencies.Coroutines.androidCoroutines)
 
     //test
