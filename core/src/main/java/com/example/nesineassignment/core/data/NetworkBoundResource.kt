@@ -23,8 +23,10 @@ inline fun <ResultType, RequestType, DomainType> networkBoundResource(
         if (shouldFetch(data!!)) {
             send(Resource.Loading())
             try {
-                val response = withContext(postExecutionThread.io) { fetch() }
-                saveFetchResult(response)
+                withContext(postExecutionThread.io) {
+                    val response = fetch()
+                    saveFetchResult(response)
+                }
                 query().map {
                     mapFromEntity(it!!)
                 }
