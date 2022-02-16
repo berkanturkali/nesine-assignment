@@ -62,5 +62,6 @@ dependencies {
     /* test */
     testImplementation(Dependencies.Test.truth)
     testImplementation(Dependencies.Test.coroutines)
+    testImplementation(Dependencies.Test.archCore)
 
 }

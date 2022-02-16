@@ -1,6 +1,5 @@
 import Dependencies.Glide.Version.glideVersion
 import Dependencies.Room.Version.roomVersion
-import Dependencies.Test.Version.roboVersion
 
 const val kotlinAndroid: String = "android"
 const val kotlinKapt: String = "kapt"
@@ -144,11 +143,12 @@ object Dependencies {
         const val roomKtx = "androidx.room:room-ktx:${Version.roomVersion}"
     }
 
-    object View{
-        object Version{
+    object View {
+        object Version {
             const val material = "1.5.0"
             const val constraintLayout = "2.1.3"
         }
+
         const val material = "com.google.android.material:material:${Version.material}"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
@@ -162,8 +162,7 @@ object Dependencies {
             const val truth = "1.1.3"
             const val mockWebServer = "4.9.3"
             const val mockk = "1.12.2"
-            const val runner: String = "1.2.0"
-            const val roboVersion:String = "4.7.3"
+            const val archCore = "2.1.0"
         }
 
         const val junit = "junit:junit:${Version.junit}"
@@ -174,15 +173,14 @@ object Dependencies {
         const val mockk = "io.mockk:mockk:${Version.mockk}"
         const val coroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Coroutines.Version.coroutines}"
-        const val runner: String = "androidx.test:runner:${Version.runner}"
-        const val roboElectric = "org.robolectric:robolectric:$roboVersion"
+        const val archCore = "androidx.arch.core:core-testing:${Version.archCore}"
     }
 }
 
 object ProjectLib {
     const val app: String = ":app"
-    const val remote:String = ":remote"
-    const val common:String = ":common"
-    const val core:String = ":core"
-    const val home:String = ":home"
+    const val remote: String = ":remote"
+    const val common: String = ":common"
+    const val core: String = ":core"
+    const val home: String = ":home"
 }
