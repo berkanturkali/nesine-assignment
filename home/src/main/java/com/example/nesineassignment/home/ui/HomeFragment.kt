@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nesineassignment.common.BaseFragment
+import com.example.nesineassignment.core.domain.ItemClickListener
 import com.example.nesineassignment.core.domain.Resource
+import com.example.nesineassignment.core.domain.model.Post
 import com.example.nesineassignment.home.adapter.PostsAdapter
 import com.example.nesineassignment.home.databinding.FragmentHomeBinding
 import com.example.nesineassignment.home.viewmodel.HomeFragmentViewModel
@@ -15,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate),ItemClickListener<Post> {
 
     private val mViewModel by viewModels<HomeFragmentViewModel>()
 
@@ -77,6 +79,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private fun showProgress(show: Boolean) {
         binding.swipeRefresh.isRefreshing = show
+    }
+
+    override fun onItemClick(item: Post) {
+
     }
 
 }

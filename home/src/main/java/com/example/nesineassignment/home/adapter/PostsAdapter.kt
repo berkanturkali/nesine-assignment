@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nesineassignment.core.domain.ItemClickListener
 import com.example.nesineassignment.core.domain.model.Post
 import com.example.nesineassignment.home.databinding.PostItemBinding
 import javax.inject.Inject
@@ -12,6 +13,8 @@ import javax.inject.Inject
 class PostsAdapter @Inject constructor(
 ) :
     ListAdapter<Post, PostsAdapter.PostViewHolder>(POST_COMPARATOR) {
+
+    private lateinit var itemClickListener: ItemClickListener<Post>
 
     companion object {
         val POST_COMPARATOR = object : DiffUtil.ItemCallback<Post>() {
@@ -33,6 +36,10 @@ class PostsAdapter @Inject constructor(
         item?.let {
             holder.bind(it)
         }
+    }
+
+    fun setListener(itemClickListener: ItemClickListener<Post>) {
+        this.itemClickListener = itemClickListener
     }
 
     inner class PostViewHolder(private val binding: PostItemBinding) :

@@ -8,6 +8,7 @@ plugins {
     kotlinAndroid
     kotlin(kotlinKapt)
     daggerHilt
+    safeArgs
 }
 
 android {
@@ -68,6 +69,8 @@ dependencies {
 
     //navigation
     implementation(Dependencies.Navigation.fragmentKtx)
+    implementation(Dependencies.Navigation.navigationUiKtx)
+    implementation(Dependencies.Navigation.navigationFragmentKtx)
 
 
     /* test */
