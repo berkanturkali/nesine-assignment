@@ -24,6 +24,7 @@ android {
         }
         buildConfigField("int", "databaseVersion", 1.toString())
         buildConfigField("String", "BASE_IMAGE_URL", "\"https://picsum.photos/\"")
+        buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com/\"")
     }
 
     sourceSets {
