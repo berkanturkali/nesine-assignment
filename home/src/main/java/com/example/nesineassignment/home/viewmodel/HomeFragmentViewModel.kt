@@ -1,7 +1,6 @@
 package com.example.nesineassignment.home.viewmodel
 
 import androidx.lifecycle.*
-import com.example.nesineassignment.core.domain.Event
 import com.example.nesineassignment.core.domain.model.Post
 import com.example.nesineassignment.core.domain.repo.PostsRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,22 +13,20 @@ class HomeFragmentViewModel @Inject constructor(
     private val repo: PostsRepo,
 ) : ViewModel() {
 
-    private val shouldRefresh = MutableLiveData<Event<Boolean>>()
+    private val shouldRefresh = MutableLiveData<Boolean>()
 
-    val posts = Transformations.switchMap(shouldRefresh) {
-        it.getContentIfNotHandled()?.let { refresh ->
+    val posts = Transformations.switchMap(shouldRefresh) {refresh->
             liveData {
                 repo.fetchPosts(refresh).collect(::emit)
             }
         }
-    }
 
     init {
         setRefresh()
     }
 
     fun setRefresh() {
-        shouldRefresh.value = Event(true)
+        shouldRefresh.value = true
     }
 
     fun remove(post: Post) {

@@ -5,6 +5,16 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10")
     }
 }
+
+allprojects {
+    configurations.all {
+        resolutionStrategy.eachDependency {
+            if (requested.group == "org.jetbrains.kotlin") {
+                useVersion("1.6.10")
+            }
+        }
+    }
+}
 subprojects {
     tasks.withType<KotlinCompile>().configureEach {
         with(kotlinOptions) {
