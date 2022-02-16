@@ -17,6 +17,12 @@ android {
         targetSdk = Config.Version.targetSdkVersion
         testInstrumentationRunner = Config.Android.testInstrumentationRunner
         consumerProguardFiles("consumer-rules.pro")
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += Pair("room.incremental", "true")
+            }
+        }
+        buildConfigField("int", "databaseVersion", 1.toString())
         buildConfigField("String", "BASE_IMAGE_URL", "\"https://picsum.photos/\"")
     }
 
