@@ -50,5 +50,4 @@ class PostsRepoImpl @Inject constructor(
                 it.isEmpty()
             }
         )
-
 }
