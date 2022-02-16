@@ -17,6 +17,7 @@ android {
         targetSdk = Config.Version.targetSdkVersion
         testInstrumentationRunner = Config.Android.testInstrumentationRunner
         consumerProguardFiles("consumer-rules.pro")
+        buildConfigField("String", "BASE_IMAGE_URL", "\"https://picsum.photos/\"")
     }
 
     buildTypes {
