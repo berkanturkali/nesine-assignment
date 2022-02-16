@@ -58,6 +58,10 @@ dependencies {
     //lifecycle
     implementation(Dependencies.AndroidX.liveDataKtx)
 
+    //view
+    implementation(Dependencies.View.recyclerView)
+    implementation(Dependencies.View.swipeRefresh)
+
 
     /* test */
     testImplementation(Dependencies.Test.truth)

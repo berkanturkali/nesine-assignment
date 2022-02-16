@@ -147,11 +147,15 @@ object Dependencies {
         object Version {
             const val material = "1.5.0"
             const val constraintLayout = "2.1.3"
+            const val swipeRefresh = "1.1.0"
+            const val recyclerView = "1.2.1"
         }
 
         const val material = "com.google.android.material:material:${Version.material}"
         const val constraintLayout =
             "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
+        const val recyclerView = "androidx.recyclerview:recyclerview:${Version.recyclerView}"
+        const val swipeRefresh = "androidx.swiperefreshlayout:swiperefreshlayout:${Version.swipeRefresh}"
     }
 
     object Test {
