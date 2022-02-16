@@ -1,7 +1,6 @@
 import BuildType.Companion.DEBUG
 import BuildType.Companion.RELEASE
 import ProjectLib.remote
-import org.gradle.internal.impldep.org.fusesource.jansi.AnsiRenderer.test
 
 plugins {
     androidLibrary

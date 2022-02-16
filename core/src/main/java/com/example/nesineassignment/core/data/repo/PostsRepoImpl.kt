@@ -1,7 +1,6 @@
 package com.example.nesineassignment.core.data.repo
 
 import com.example.nesineassignment.core.cache.abstraction.PostsCache
-import com.example.nesineassignment.core.cache.db.PostsDb
 import com.example.nesineassignment.core.cache.mapper.PostCacheMapper
 import com.example.nesineassignment.core.data.networkBoundResource
 import com.example.nesineassignment.core.domain.Resource
@@ -20,7 +19,7 @@ class PostsRepoImpl @Inject constructor(
     private val postsCache: PostsCache,
     private val postExecutionThread: PostExecutionThread,
     private val cacheMapper: PostCacheMapper,
-    private val remoteMapper: PostMapper
+    private val remoteMapper: PostMapper,
 ) : PostsRepo {
     override suspend fun fetchPosts(refresh: Boolean): Flow<Resource<List<Post>>> =
         networkBoundResource(
