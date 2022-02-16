@@ -3,7 +3,6 @@ import Dependencies.Room.Version.roomVersion
 
 const val kotlinAndroid: String = "android"
 const val kotlinKapt: String = "kapt"
-const val kotlinVersion = "1.6.10"
 
 object Config {
     object Version {
@@ -108,14 +107,6 @@ object Dependencies {
         const val navigationUiKtx: String =
             "androidx.navigation:navigation-ui-ktx:${Version.navVersion}"
         const val fragmentKtx: String = "androidx.fragment:fragment-ktx:${Version.fragment}"
-    }
-
-    object Logger {
-        object Version {
-            const val timber = "4.7.1"
-        }
-
-        const val timber = "com.jakewharton.timber:timber:${Version.timber}"
     }
 
     object Glide {

@@ -18,14 +18,11 @@ compileKotlin.kotlinOptions {
 
 object Plugin {
     object Version {
-        const val spotless: String = "6.2.0"
         const val kotlin: String = "1.6.10"
         const val androidGradle: String = "7.1.1"
         const val navigation: String = "2.4.1"
         const val daggerHiltAndroid: String = "2.38.1"
     }
-
-    const val spotless: String = "com.diffplug.spotless:spotless-plugin-gradle:${Version.spotless}"
     const val kotlin: String = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
     const val androidGradle: String = "com.android.tools.build:gradle:${Version.androidGradle}"
     const val navigationSafeArgs: String =
@@ -34,7 +31,6 @@ object Plugin {
         "com.google.dagger:hilt-android-gradle-plugin:${Version.daggerHiltAndroid}"
 }
 dependencies {
-    implementation(Plugin.spotless)
     implementation(Plugin.kotlin)
     implementation(Plugin.androidGradle)
     implementation(Plugin.navigationSafeArgs)
