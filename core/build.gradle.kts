@@ -1,6 +1,7 @@
 import BuildType.Companion.DEBUG
 import BuildType.Companion.RELEASE
 import ProjectLib.remote
+import org.gradle.internal.impldep.org.fusesource.jansi.AnsiRenderer.test
 
 plugins {
     androidLibrary
@@ -24,6 +25,14 @@ android {
         }
         buildConfigField("int", "databaseVersion", 1.toString())
         buildConfigField("String", "BASE_IMAGE_URL", "\"https://picsum.photos/\"")
+    }
+
+    sourceSets {
+        val sharedTestDir = "src/sharedTest/java"
+        val androidTest by getting
+        val test by getting
+        androidTest.java.srcDirs(sharedTestDir)
+        test.java.srcDirs(sharedTestDir)
     }
 
     buildTypes {
@@ -51,7 +60,6 @@ dependencies {
     implementation(Dependencies.AndroidX.appCompat)
     implementation(Dependencies.View.material)
     implementation(Dependencies.View.constraintLayout)
-    testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.junitExt)
     androidTestImplementation(Dependencies.Test.espresso)
 
@@ -77,4 +85,8 @@ dependencies {
     testImplementation(Dependencies.Network.moshi)
     testImplementation(Dependencies.Network.retrofitMoshi)
     testImplementation(Dependencies.Test.mockWebServer)
+    testImplementation(Dependencies.Test.junit)
+    testImplementation(Dependencies.Test.junitExt)
+
+    androidTestImplementation(Dependencies.Test.truth)
 }

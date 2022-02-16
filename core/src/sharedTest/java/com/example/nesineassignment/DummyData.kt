@@ -1,4 +1,4 @@
-package com.example.nesineassignment.core.util
+package com.example.nesineassignment
 
 import com.example.nesineassignment.core.BuildConfig
 import com.example.nesineassignment.core.cache.model.PostEntity

@@ -1,5 +1,6 @@
 import Dependencies.Glide.Version.glideVersion
 import Dependencies.Room.Version.roomVersion
+import Dependencies.Test.Version.roboVersion
 
 const val kotlinAndroid: String = "android"
 const val kotlinKapt: String = "kapt"
@@ -159,6 +160,8 @@ object Dependencies {
             const val truth = "1.1.3"
             const val mockWebServer = "4.9.3"
             const val mockk = "1.12.2"
+            const val runner: String = "1.2.0"
+            const val roboVersion:String = "4.7.3"
         }
 
         const val junit = "junit:junit:${Version.junit}"
@@ -169,6 +172,8 @@ object Dependencies {
         const val mockk = "io.mockk:mockk:${Version.mockk}"
         const val coroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Coroutines.Version.coroutines}"
+        const val runner: String = "androidx.test:runner:${Version.runner}"
+        const val roboElectric = "org.robolectric:robolectric:$roboVersion"
     }
 }
 

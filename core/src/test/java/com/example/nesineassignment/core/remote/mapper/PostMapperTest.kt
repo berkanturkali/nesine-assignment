@@ -1,6 +1,6 @@
 package com.example.nesineassignment.core.remote.mapper
 
-import com.example.nesineassignment.core.util.DummyData
+import com.example.nesineassignment.DummyData
 import com.google.common.truth.Truth
 import org.junit.Test
 
