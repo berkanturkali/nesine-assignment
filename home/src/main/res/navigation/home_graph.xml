@@ -22,5 +22,20 @@
         <argument
             android:name="post"
             app:argType="com.example.nesineassignment.core.domain.model.Post" />
+        <action
+            android:id="@+id/action_detailsFragment_to_editDialog"
+            app:destination="@id/editDialog" />
     </fragment>
+    <dialog
+        android:id="@+id/editDialog"
+        android:name="com.example.nesineassignment.home.ui.EditDialog"
+        android:label="EditDialog"
+        tools:layout="@layout/dialog_edit">
+    <argument
+        android:name="title_desc"
+        app:argType="string" />
+    <argument
+        android:name="isTitle"
+        app:argType="boolean" />
+    </dialog>
 </navigation>

@@ -58,8 +58,8 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
     }
 
     private fun showDialog(titleBody: String, isTitle: Boolean) {
-//        val action = DetailsFragmentDirections.actionDetailsFragmentToEditDialog(titleBody, isTitle)
-//        findNavController().navigate(action)
+        val action = DetailsFragmentDirections.actionDetailsFragmentToEditDialog(titleBody, isTitle)
+        findNavController().navigate(action)
     }
 
     private fun animateVisibility(visible: Boolean) {
