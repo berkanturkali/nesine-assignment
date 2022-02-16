@@ -55,4 +55,8 @@ dependencies {
     testImplementation(Dependencies.Test.junit)
     androidTestImplementation(Dependencies.Test.junitExt)
     androidTestImplementation(Dependencies.Test.espresso)
+
+    //navigation
+    implementation(Dependencies.Navigation.navigationUiKtx)
+    implementation(Dependencies.Navigation.navigationFragmentKtx)
 }
