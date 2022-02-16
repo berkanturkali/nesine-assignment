@@ -1,6 +1,7 @@
 package com.example.nesineassignment.core.domain.model
 
 import android.os.Parcelable
+import android.text.TextUtils.replace
 import kotlinx.parcelize.Parcelize
 
 
@@ -11,4 +12,13 @@ data class Post(
     var title: String,
     val userId: Int,
     val image: String,
-):Parcelable
+):Parcelable{
+
+    fun replacedTitle():String{
+        return this.title.replace("\n"," ")
+    }
+
+    fun replacedBody():String{
+        return this.body.replace("\n"," ")
+    }
+}

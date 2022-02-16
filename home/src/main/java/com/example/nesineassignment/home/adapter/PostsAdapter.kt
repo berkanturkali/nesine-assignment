@@ -13,7 +13,7 @@ import com.example.nesineassignment.home.util.load
 import javax.inject.Inject
 
 class PostsAdapter @Inject constructor(
-    private val circularProgressDrawable: CircularProgressDrawable
+    private val circularProgressDrawable: CircularProgressDrawable,
 ) :
     ListAdapter<Post, PostsAdapter.PostViewHolder>(POST_COMPARATOR) {
 
@@ -62,8 +62,8 @@ class PostsAdapter @Inject constructor(
 
         fun bind(post: Post) {
             binding.apply {
-                postDescription.text = post.body
-                postTitle.text = post.title
+                postDescription.text = post.replacedBody()
+                postTitle.text = post.replacedTitle()
                 binding.postIv.load(post.image, circularProgressDrawable = circularProgressDrawable)
             }
         }

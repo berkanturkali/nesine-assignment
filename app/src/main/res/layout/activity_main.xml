@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:textStyle="bold"
+                android:fontFamily="@font/lexend_semi_bold"
                 tools:text="Lorem" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

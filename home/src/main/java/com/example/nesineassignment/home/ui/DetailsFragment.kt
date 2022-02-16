@@ -72,8 +72,8 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
 
     private fun setField(post:Post){
         binding.apply {
-            description.text = post.body
-            title.text = post.title
+            description.text = post.replacedBody()
+            title.text = post.replacedTitle()
         }
     }
 
