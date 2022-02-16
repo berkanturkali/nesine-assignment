@@ -10,7 +10,6 @@ import androidx.transition.Slide
 import androidx.transition.TransitionManager
 import com.example.nesineassignment.common.BaseFragment
 import com.example.nesineassignment.core.domain.model.Post
-import com.example.nesineassignment.home.R
 import com.example.nesineassignment.home.databinding.FragmentDetailsBinding
 import com.example.nesineassignment.home.viewmodel.DetailsFragmentViewModel
 
@@ -25,12 +24,11 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentDetailsBinding.bind(view)
         binding.editTitleBtn.setOnClickListener {
-            showDialog(post.title,true)
+            showDialog(post.title, true)
         }
         binding.editBodyBtn.setOnClickListener {
-            showDialog(post.body,false)
+            showDialog(post.body, false)
         }
         binding.updateBtn.setOnClickListener {
             mViewModel.updatePost(post)
@@ -42,28 +40,35 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
         mViewModel.post.observe(viewLifecycleOwner) {
             animateVisibility(args.post != it)
             post = it
-            binding.post = it
+            setField(post)
         }
 
-        mViewModel.updated.observe(viewLifecycleOwner){
-            it.getContentIfNotHandled()?.let { success->
-                if(success) findNavController().navigateUp()
+        mViewModel.updated.observe(viewLifecycleOwner) {
+            it.getContentIfNotHandled()?.let { success ->
+                if (success) findNavController().navigateUp()
             }
         }
     }
 
-    private fun showDialog(titleBody: String,isTitle:Boolean) {
-        val action = DetailsFragmentDirections.actionDetailsFragmentToEditDialog(titleBody,isTitle)
-        findNavController().navigate(action)
+    private fun setField(post:Post){
+        binding.apply {
+            description.text = post.body
+            title.text = post.title
+        }
     }
 
-    private fun animateVisibility(visible:Boolean){
+    private fun showDialog(titleBody: String, isTitle: Boolean) {
+//        val action = DetailsFragmentDirections.actionDetailsFragmentToEditDialog(titleBody, isTitle)
+//        findNavController().navigate(action)
+    }
+
+    private fun animateVisibility(visible: Boolean) {
         val transition = Slide(Gravity.BOTTOM)
         transition.apply {
             duration = 600
             addTarget(binding.updateBtn)
         }
-        TransitionManager.beginDelayedTransition(binding.rootView,transition)
-        binding.updateBtn.visibility = if(visible) View.VISIBLE else View.GONE
+        TransitionManager.beginDelayedTransition(binding.rootView, transition)
+        binding.updateBtn.visibility = if (visible) View.VISIBLE else View.GONE
     }
 }

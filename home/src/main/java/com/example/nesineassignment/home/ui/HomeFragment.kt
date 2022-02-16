@@ -3,6 +3,7 @@ package com.example.nesineassignment.home.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -82,7 +83,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     override fun onItemClick(item: Post) {
-
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(item)
+        findNavController().navigate(action)
     }
 
 }

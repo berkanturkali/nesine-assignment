@@ -7,6 +7,7 @@ plugins {
     kotlinAndroid
     kotlin(kotlinKapt)
     daggerHilt
+    parcelize
 }
 
 android {
