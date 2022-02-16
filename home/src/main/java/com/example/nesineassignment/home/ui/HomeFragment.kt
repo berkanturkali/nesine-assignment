@@ -79,6 +79,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         binding.swipeRefresh.isRefreshing = show
     }
 
-
-
 }
