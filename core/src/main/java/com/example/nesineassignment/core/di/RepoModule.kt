@@ -10,6 +10,6 @@ import dagger.hilt.components.SingletonComponent
 @[Module InstallIn(SingletonComponent::class)]
 interface RepoModule {
 
-    @get:Binds
+    @get:[Binds]
     val PostsRepoImpl.postsRepo: PostsRepo
 }

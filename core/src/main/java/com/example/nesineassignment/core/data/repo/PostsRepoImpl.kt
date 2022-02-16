@@ -46,4 +46,8 @@ class PostsRepoImpl @Inject constructor(
     override suspend fun remove(post: Post) {
        postsCache.delete(cacheMapper.mapToEntity(post))
     }
+
+    override suspend fun update(post: Post):Int {
+        return postsCache.update(cacheMapper.mapToEntity(post))
+    }
 }

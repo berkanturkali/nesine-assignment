@@ -28,10 +28,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter.setListener(this)
         binding.postsRv.addItemDecoration(DividerItemDecoration(binding.postsRv.context,
             DividerItemDecoration.VERTICAL))
         binding.postsRv.apply {
             adapter = this@HomeFragment.adapter
+            setHasFixedSize(true)
         }
 
         binding.swipeRefresh.setOnRefreshListener(mViewModel::setRefresh)

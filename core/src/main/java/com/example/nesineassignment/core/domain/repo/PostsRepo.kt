@@ -8,4 +8,6 @@ interface PostsRepo {
     suspend fun fetchPosts(refresh: Boolean): Flow<Resource<List<Post>>>
 
     suspend fun remove(post:Post)
+
+    suspend fun update(post:Post):Int
 }

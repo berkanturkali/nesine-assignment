@@ -6,6 +6,8 @@ import ProjectLib.remote
 plugins {
     androidApplication
     kotlinAndroid
+    daggerHilt
+    kotlin(kotlinKapt)
 }
 
 android {
@@ -41,6 +43,12 @@ android {
     buildFeatures{
         viewBinding = true
     }
+    kapt {
+        correctErrorTypes = true
+    }
+}
+hilt {
+    enableAggregatingTask = true
 }
 
 dependencies {
@@ -62,4 +70,8 @@ dependencies {
     //navigation
     implementation(Dependencies.Navigation.navigationUiKtx)
     implementation(Dependencies.Navigation.navigationFragmentKtx)
+
+    //hilt
+    implementation(Dependencies.DI.daggerHiltAndroid)
+    kapt(Dependencies.DI.AnnotationProcessor.daggerHiltCompiler)
 }

@@ -43,6 +43,10 @@ class DetailsFragmentViewModel @Inject constructor(
     }
 
     fun updatePost(post:Post){
-
+        viewModelScope.launch(postExecutionThread.main) {
+            val id = withContext(postExecutionThread.io){repo.update(post)}
+            val success = id != -1
+            _updated.value = Event(success)
+        }
     }
 }

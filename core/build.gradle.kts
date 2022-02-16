@@ -63,6 +63,7 @@ dependencies {
     implementation(Dependencies.View.constraintLayout)
     androidTestImplementation(Dependencies.Test.junitExt)
     androidTestImplementation(Dependencies.Test.espresso)
+    implementation(Dependencies.View.swipeRefresh)
 
     //cache
     implementation(Dependencies.Room.room)

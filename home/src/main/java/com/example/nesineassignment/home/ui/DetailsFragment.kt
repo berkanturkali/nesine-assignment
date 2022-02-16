@@ -6,13 +6,22 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import androidx.transition.Slide
 import androidx.transition.TransitionManager
 import com.example.nesineassignment.common.BaseFragment
+import com.example.nesineassignment.common.Constants.BODY_KEY
+import com.example.nesineassignment.common.Constants.TITLE_KEY
+import com.example.nesineassignment.common.getNavigationResult
 import com.example.nesineassignment.core.domain.model.Post
+import com.example.nesineassignment.home.R
 import com.example.nesineassignment.home.databinding.FragmentDetailsBinding
+import com.example.nesineassignment.home.util.load
 import com.example.nesineassignment.home.viewmodel.DetailsFragmentViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBinding::inflate) {
 
     private val mViewModel by viewModels<DetailsFragmentViewModel>()
@@ -20,10 +29,14 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
 
     private val args by navArgs<DetailsFragmentArgs>()
 
+    @Inject
+    lateinit var circularProgressDrawable: CircularProgressDrawable
+
     private lateinit var post: Post
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.image.load(args.post.image,circularProgressDrawable)
         binding.editTitleBtn.setOnClickListener {
             showDialog(post.title, true)
         }
@@ -41,6 +54,13 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
             animateVisibility(args.post != it)
             post = it
             setField(post)
+        }
+
+        getNavigationResult<String>(R.id.detailsFragment, TITLE_KEY){
+            mViewModel.updateTitle(it)
+        }
+        getNavigationResult<String>(R.id.detailsFragment, BODY_KEY){
+            mViewModel.updateBody(it)
         }
 
         mViewModel.updated.observe(viewLifecycleOwner) {

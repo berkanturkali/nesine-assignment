@@ -5,12 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.example.nesineassignment.core.domain.ItemClickListener
 import com.example.nesineassignment.core.domain.model.Post
 import com.example.nesineassignment.home.databinding.PostItemBinding
+import com.example.nesineassignment.home.util.load
 import javax.inject.Inject
 
 class PostsAdapter @Inject constructor(
+    private val circularProgressDrawable: CircularProgressDrawable
 ) :
     ListAdapter<Post, PostsAdapter.PostViewHolder>(POST_COMPARATOR) {
 
@@ -51,7 +54,7 @@ class PostsAdapter @Inject constructor(
                 if (pos != RecyclerView.NO_POSITION) {
                     val item = getItem(pos)
                     item?.let {
-
+                        itemClickListener.onItemClick(it)
                     }
                 }
             }
@@ -59,7 +62,9 @@ class PostsAdapter @Inject constructor(
 
         fun bind(post: Post) {
             binding.apply {
-
+                postDescription.text = post.body
+                postTitle.text = post.title
+                binding.postIv.load(post.image, circularProgressDrawable = circularProgressDrawable)
             }
         }
     }

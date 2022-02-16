@@ -67,6 +67,10 @@ dependencies {
     implementation(Dependencies.View.recyclerView)
     implementation(Dependencies.View.swipeRefresh)
 
+    //glide
+    implementation(Dependencies.Glide.glide)
+    kapt(Dependencies.Glide.AnnotationProcessor.glideAnnotation)
+
     //navigation
     implementation(Dependencies.Navigation.fragmentKtx)
     implementation(Dependencies.Navigation.navigationUiKtx)

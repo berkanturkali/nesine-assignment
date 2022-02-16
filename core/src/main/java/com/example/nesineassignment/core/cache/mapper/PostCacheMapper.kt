@@ -4,8 +4,9 @@ import com.example.nesineassignment.core.BuildConfig
 import com.example.nesineassignment.core.cache.mapper.base.EntityDomainMapper
 import com.example.nesineassignment.core.cache.model.PostEntity
 import com.example.nesineassignment.core.domain.model.Post
+import javax.inject.Inject
 
-class PostCacheMapper:EntityDomainMapper<PostEntity,Post> {
+class PostCacheMapper @Inject constructor():EntityDomainMapper<PostEntity,Post> {
 
     companion object{
         const val BASE_IMAGE_URL =BuildConfig.BASE_IMAGE_URL
